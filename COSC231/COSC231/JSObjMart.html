@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+Description: This is an update of Project 7! Instead of using parallel arrays, we're
+using an array of objects along with PROPERTIES. This code is literally just my Project
+7's code with the Javascript changed.
+
+Also I removed all mentions of tax because it was broken and I didn't feel like fixing it.
+
+Author: Kelly Mayhew
+Updated: 3/9/2017
+-->
+<head>
+  <meta charset="utf-8" />
+  <title>BUY BUY BUY</title>
+  <style>
+    div {
+      border: 1px solid black;
+      background-color: #d4ffc4;
+      margin: 50px;
+      padding: 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    div.table{
+      border: none;
+      margin: 20px;
+      padding: 0px;
+    }
+    table{
+      min-width: 40%;
+      max-width: 75%
+      text-align: right;
+    }
+    th, td{
+      margin-right: 15px;
+      text-align: right;
+    }
+  </style>
+
+  <script type="text/javascript">
+
+    var cart=[], total=0, text="";
+    
+    function Purchases(item, cost, num){
+      this.item = item;
+      this.cost = cost;
+      this.num = num;
+    }
+
+    function checkOut(){
+      displayReceipt();
+      totalCost();
+      text += "<div class='table'><table><tr></td></tr><tr><td>Total Cost:   </td><td>"
+        +total.toFixed(2).toString()+"</td></tr></table></div>";
+      document.getElementById("demo").innerHTML = text;
+    } 
+
+    function displayReceipt(){
+      total=0;
+      text="";
+      text="==============================================";
+      text+="<br /><h2>Receipt for Kelly Mayhew</h2>";
+
+      
+      text+= "<div class='table'><table><tr><th>Item</th><th>Quantity</th>"
+        +"<th>Cost</th></tr>";
+      
+      for(i = 0; i < cart.length; i++){
+        text+= "<tr><td>"+cart[i].item+"</td><td>"+cart[i].num+"</td><td>"
+          +cart[i].cost+"</td></tr>";
+      }
+      
+      text+= "</table></div>";
+      document.getElementById("demo").innerHTML = text;
+    }
+
+    function insert(){
+      cart.push(new Purchases(document.getElementById('item').value, 
+                              document.getElementById("cost").value, 
+                              Math.floor(document.getElementById("count").value)));
+      
+      displayReceipt();
+    }
+    
+    function totalCost(){
+      for(i = 0; i < cart.length; i++){
+        total+= cart[i].cost*cart[i].num;
+      }
+      return total;
+    }
+  </script>
+</head>
+
+<body >
+  <div>
+  <h1>SUPERMARKET</h1>
+  <p>We sell everything. Anything you can think up, we sell.<br>
+  Enter what you want to buy in the form below.<br>
+  Submit the item by clicking on "Add to Cart".<br>
+  Click "Go to Check Out" when you've got everything you want.<br>
+  If you want to reset, click "Clear Cart" and the page will refresh.<br>
+  </p>
+
+  <form onsubmit="checkOut()">
+    <input id="item" type="text" size="40" placeholder="Item" required/><br />
+    <input id="cost" type="number" placeholder="Cost" required/> <br>
+    <input id="count" type="number" placeholder="Quantity" required/><br>
+
+    <input type="reset" value="Add to Cart" onclick="insert()" />
+    <input type="reset" value="Go to Check Out" onclick="checkOut()"/> 
+    <input type="reset" value="Clear Cart" onclick="location.reload()"/>
+  </form>
+  <p id="demo"></p>
+  </div>
+</body>
+</html>

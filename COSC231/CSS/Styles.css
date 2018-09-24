@@ -1,0 +1,115 @@
+/* Kelly Mayhew, updated 2/16/17 */
+
+a:link{
+  color: blue;
+}
+
+a:visited{
+  color: gray;
+}
+
+img.top{
+  width: 200;
+  padding: 5px;
+}
+
+body{
+  background-color: #ffffc5;
+  color: #a000bf;
+  margin: 5;
+}
+
+div.content{
+  padding-top: 45px;
+}
+
+h1.top{
+  color: #630076;
+  font-family: Arial, Helvetica, Cursive, Serif;
+  text-align: center;
+}
+
+h2.top{
+  color: #630076;
+  font-family: Arial, Helvetica, Cursive, Serif;
+  text-align: center;
+}
+
+h2.bio{
+  color: #630076;
+  text-align: center;
+}
+
+li.nav{
+  float: left;
+}
+
+li a.nav{
+  display: block;
+  color: #ecec2b;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a.active{
+  display: block;
+  color: #630076;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #ecec2b;
+}
+
+li a:hover.nav{
+  background-color: #a000bf;
+}
+
+li.rightflo{
+  float: right;
+}
+
+table.top{
+  border: 2px solid #3a0078;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5px;
+}
+
+table.bio{
+  border: 2px solid #3a0078;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5px;
+}
+
+td.top{
+  border: 2px solid #3a0078;
+  width: 66%;
+  text-align: center;
+  padding: 5px;
+}
+
+td.biotop{
+  color: #630076;
+  border: 2px solid #3a0078;
+  width: 33%;
+  text-align: center;
+}
+
+td.bio{
+  color: #a000bf;
+  border: 2px solid #3a0078;
+  padding: 10px;
+}
+
+ul.nav{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #630076;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

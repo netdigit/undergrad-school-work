@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  
+  <!-- Written by Kelly Mayhew on 2/9/2017 -->
+  
+  <head>
+    <title>Kelly's JS Games</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../CSS/Styles.css">
+    
+    <script>
+    /* Give Change
+    	This function pulls the total change from the input box and calculates change
+    	needed by dividing the total by the dollar/coin value and removing the decimal 
+    	point of of the result from it. It then adjusts the total and moves on to the 
+    	next one. Once that's all done, it converts the values to strings and displays 
+    	the result for everything. */
+    
+      function giveChange(){
+        /*Get value and multiply by 100 to make useable*/
+        var total = 100*(document.getElementById("change").value);
+        
+        /*Calculate bills*/
+        var twenties = Math.floor(total/2000);
+        total -= twenties*2000;
+        var tens = Math.floor(total/1000);
+        total -= tens*1000;
+        var fives = Math.floor(total/500);
+        total -= fives*500;
+        var ones = Math.floor(total/100);
+        total -= ones*100;
+        
+        /*Calculate coins*/
+        var quarters = Math.floor(total/25);
+        total -= quarters*25;
+        var dimes = Math.floor(total/10);
+        total-= dimes*10;
+        var nickels = Math.floor(total/5);
+        total -= nickels*5;
+        var pennies = Math.round(total);
+        
+        /*Convert to strings*/
+        var Stwenties = twenties.toString();
+        var Stens = tens.toString();
+        var Sfives = fives.toString();
+        var Sones = ones.toString();
+        var Squarters = quarters.toString();
+        var Sdimes = dimes.toString();
+        var Snickels = nickels.toString();
+        var Spennies = pennies.toString();
+        
+        /*Output*/
+        document.getElementById("indent").style.paddingLeft = "15px";
+        document.getElementById("twenties").innerHTML = "Twenties: " + Stwenties;
+        document.getElementById("tens").innerHTML = "Tens: " + Stens;
+        document.getElementById("fives").innerHTML = "Fives: " + Sfives;
+        document.getElementById("ones").innerHTML = "Ones: " + Sones;
+        document.getElementById("quarters").innerHTML = "Quarters: " + Squarters;
+        document.getElementById("dimes").innerHTML = "Dimes: " + Sdimes;
+        document.getElementById("nickels").innerHTML = "Nickels: " + Snickels;
+        document.getElementById("pennies").innerHTML = "Pennies: " + Spennies;
+      }
+      
+      
+      var number = Math.floor(Math.random()*100) + 1; /*Set random number*/
+      
+    /* Guess Number
+    	This function gets a number guess from the user and compares it to a preselected
+    	random number. It then gives feedback (if result is too low, too high, or 
+    	correct) and, if the guess is correct, can change the value of the random 
+    	number. */
+      
+      function guessNumber(){
+        var name = document.getElementById("name").value;
+        var guess = document.getElementById("guess").value;
+        
+        if(guess == number){
+          document.getElementById("result").innerHTML = name + ", you're right! Enter"
+            + " another number to try again.";
+          number = Math.floor(Math.random()*100) + 1;
+        }
+        else if(guess > number){
+          document.getElementById("result").innerHTML = name + ", your guess is too high.";
+        }
+        else{
+          document.getElementById("result").innerHTML = name + ", your guess is too low.";
+        }
+      }
+    </script>
+  </head>
+  
+  <body>
+    
+    <!-- Change Calculator -->
+    
+    <h2>Change Calculator by Kelly!</h2>
+    
+    <p>Enter the amount of change (in pennies) the customer should get back and 
+    this will calculate the number of dollar bills, quarters, dimes, nickels, and 
+    pennies you'd have to give them.</p>
+    
+    <p>Enter change: <input id="change" type="number" min="0" onchange="giveChange()"></p>
+    
+    <h3>Change back</h3>
+    <div id="indent">
+      <h4 id="twenties"></h4>
+      <h4 id="tens"></h4>
+      <h4 id="fives"></h4>
+      <h4 id="ones"></h4>
+      <h4 id="quarters"></h4>
+      <h4 id="dimes"></h4>
+      <h4 id="nickels"></h4>
+      <h4 id="pennies"></h4>
+    </div>
+    
+    <br><br>
+    
+    <!-- Guessing Game -->
+    
+    <h2>Guess the Number!</h2>
+    
+    <p>Enter a whole number from 1 to 100 (including 1 or 100) and see if you get 
+    it right!</p>
+    
+    <p>Enter your first name: <input id="name" type="text"></p>
+    <p>Enter your guess: <input id="guess" type="number" min="1" max="100" 
+      onchange="guessNumber()"></p>
+      
+    <h3 id="result"></h3>
+    
+  </body>
+  
+</html>

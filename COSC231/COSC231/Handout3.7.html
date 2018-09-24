@@ -1,0 +1,62 @@
+<DOCTYPE! html>
+<html>
+<!-- Collection of items stored in an array 
+Example from 3/7 -->
+<head>
+<script>
+  var coins = [];
+  
+  function Coin(name, currency, value){
+    this.name = name;
+    this.currency = currency;
+    this.value = value;
+    this.display = function(){
+      return("<p>"+this.name+": "+this.value+" "+this.currency+"</p>");
+    }
+  }
+  
+  function insert(){
+    coins.push(new Coin(document.getElementById("name").value, 
+        document.getElementById("currency").value, 
+        document.getElementById("value").value));
+    if(document.getElementById("check").checked){
+      display();
+      document.getElementById("check").checked = true; //Doesn't work.
+    }
+  }
+  
+  function display(){
+    text="Current Collection:";
+    for(var i = 0; i < coins.length; i++){
+      text+=coins[i].display();
+    }
+    document.getElementById("output").innerHTML = text;
+  }
+  
+  function clearCoins(){
+    coins = [];
+  }
+  
+</script>
+</head>
+
+<body>
+  
+  <h1>Coin Collection</h1>
+  
+  <form>
+    Coin Information:<br>
+    <input id="name" name="name" type="text" placeholder="Name of Coin"><br>
+    <input id="currency" name="currency" type="text" placeholder="Name of Currency"><br>
+    <input id="value" name="value" type="number" placeholder="Value of Coin"><br>
+    
+    <input type="reset" value="Add to Collection" onclick="insert()">
+    <input type="reset" value="Show Collection" onclick="display()">
+    <input type="reset" value="Empty Collection" onclick="clearCoins()">
+    <input id="check" type="checkbox">Show collection as you go (It doesn't work! ono)<br>
+  </form>
+  
+  <p id="output">
+  
+</body>
+</html>
